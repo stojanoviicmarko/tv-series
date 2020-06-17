@@ -1,16 +1,13 @@
-import React, {Component} from 'react';
-import '../App.css';
-import '../api/rootUrl'
-import getRootUrl from '../api/rootUrl';
-import Header from './Header';
+import React, { Component } from 'react'
+import '../App.css'
+import '../api/Data'
+import Data from '../api/Data'
+import Header from './Header'
 
-class App extends Component{
+class App extends Component {
     render() {
-        console.log(getRootUrl());
-        return (
-            <Header />
-        )
+        return <Header />
     }
 }
 
-export default App;
+export default App

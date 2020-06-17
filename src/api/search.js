@@ -1,5 +1,3 @@
-import './rootUrl';
+import './rootUrl'
 
-export default function searchUrl() {
-    
-}
+export default function searchUrl() {}
