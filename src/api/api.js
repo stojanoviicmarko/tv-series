@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://api.tvmaze.com/shows'
+const url = 'https://api.tvmaze.com/shows'
 
 export const fetchData = async (showNumber) => {
   try {
