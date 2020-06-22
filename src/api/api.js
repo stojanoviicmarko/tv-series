@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://cors-anywhere.herokuapp.com/http://api.tvmaze.com/shows'
+const url = 'http://api.tvmaze.com/shows'
 
 export const fetchData = async (showNumber) => {
   try {
