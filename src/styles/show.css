@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.show-wrap{
+  margin: 30px;
+  width: 200px;
+  background-color: darkgrey;
+}
+.show-img {
+  width: 200px;
+  height: 300px;
+}

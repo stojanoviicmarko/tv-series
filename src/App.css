@@ -3,3 +3,8 @@
   margin: 0;
   padding: 0;
 }
+.shows{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
