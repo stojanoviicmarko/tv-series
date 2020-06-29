@@ -27,15 +27,17 @@ export default class Shows extends Component {
       return (
         <div className="show-wrap">
           <img className="show-img" src={showImg} alt="show-poster" />
-          <p className="show-text">{this.state.showNames[0]}</p>
         </div>
       )
     })
+    let firstPage = []
+    let secondPage = []
+
     return (
       <>
         <div className="main">
-          <div className="shows">{showsArray}</div>
           <Filter />
+          <div className="shows">{showsArray}</div>
         </div>
       </>
     )
