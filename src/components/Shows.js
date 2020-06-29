@@ -30,9 +30,6 @@ export default class Shows extends Component {
         </div>
       )
     })
-    let firstPage = []
-    let secondPage = []
-
     return (
       <>
         <div className="main">

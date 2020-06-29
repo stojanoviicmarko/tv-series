@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import '../styles/filters.css';
+import React, { Component } from 'react'
+import '../styles/filters.css'
 
 export default class Filter extends Component {
   render() {
@@ -7,51 +7,51 @@ export default class Filter extends Component {
       <div className="filters">
         <label>Ganre: </label>
         <select name="genre">
-          <option value='all'>All</option>
-          <option value='action'>Action</option>
-          <option value='adult'>Adult</option>
-          <option value='adventure'>Adventure</option>
-          <option value='anime'>Anime</option>
-          <option value='children'>Children</option>
-          <option value='comedy'>Comedy</option>
-          <option value='crime'>Crime</option>
-          <option value='diy'>DIY</option>
-          <option value='drama'>Drama</option>
-          <option value='rspionage'>Espionage</option>
-          <option value='family'>Family</option>
-          <option value='fantasy'>Fantasy</option>
-          <option value='food'>Food</option>
-          <option value='history'>History</option>
-          <option value='horror'>Horror</option>
-          <option value='legal'>Legal</option>
-          <option value='medical'>Medical</option>
-          <option value='music'>Music</option>
-          <option value='mystery'>Mystery</option>
-          <option value='mature'>Mature</option>
-          <option value='romance'>Romance</option>
-          <option value='science-Fiction'>Science-Fiction</option>
-          <option value='sports'>Sports</option>
-          <option value='supernatural'>Supernatural</option>
-          <option value='thriller'>Thriller</option>
-          <option value='travel'>Travel</option>
-          <option value='war'>War</option>
-          <option value='western'>Western</option>
+          <option value="all">All</option>
+          <option value="action">Action</option>
+          <option value="adult">Adult</option>
+          <option value="adventure">Adventure</option>
+          <option value="anime">Anime</option>
+          <option value="children">Children</option>
+          <option value="comedy">Comedy</option>
+          <option value="crime">Crime</option>
+          <option value="diy">DIY</option>
+          <option value="drama">Drama</option>
+          <option value="rspionage">Espionage</option>
+          <option value="family">Family</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="food">Food</option>
+          <option value="history">History</option>
+          <option value="horror">Horror</option>
+          <option value="legal">Legal</option>
+          <option value="medical">Medical</option>
+          <option value="music">Music</option>
+          <option value="mystery">Mystery</option>
+          <option value="mature">Mature</option>
+          <option value="romance">Romance</option>
+          <option value="science-Fiction">Science-Fiction</option>
+          <option value="sports">Sports</option>
+          <option value="supernatural">Supernatural</option>
+          <option value="thriller">Thriller</option>
+          <option value="travel">Travel</option>
+          <option value="war">War</option>
+          <option value="western">Western</option>
         </select>
         <label>Rating: </label>
         <select name="rating">
-          <option value='all'>All</option>
-          <option value='2+'>2+</option>
-          <option value='3+'>3+</option>
-          <option value='4+'>4+</option>
-          <option value='5+'>5+</option>
-          <option value='6+'>6+</option>
-          <option value='7+'>7+</option>
-          <option value='8+'>8+</option>
-          <option value='9+'>9+</option>
+          <option value="all">All</option>
+          <option value="2+">2+</option>
+          <option value="3+">3+</option>
+          <option value="4+">4+</option>
+          <option value="5+">5+</option>
+          <option value="6+">6+</option>
+          <option value="7+">7+</option>
+          <option value="8+">8+</option>
+          <option value="9+">9+</option>
         </select>
         <label>Language: </label>
         <select data-placeholder="Choose a Language...">
-          <option value='all'>All</option>
+          <option value="all">All</option>
           <option value="AF">Afrikaans</option>
           <option value="SQ">Albanian</option>
           <option value="AR">Arabic</option>
@@ -126,6 +126,6 @@ export default class Filter extends Component {
           <option value="XH">Xhosa</option>
         </select>
       </div>
-    );
+    )
   }
 }
