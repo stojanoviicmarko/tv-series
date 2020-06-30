@@ -2,11 +2,36 @@ import React, { Component } from 'react'
 import '../styles/filters.css'
 
 export default class Filter extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      ganre: '',
+      rating: '',
+      language: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.applyFilter = this.applyFilter.bind(this)
+  }
+  handleChange(event) {
+    const ganreValue = event.target.value
+    const ratingValue = event.target.value
+    const langValue = event.target.value
+    this.setState({
+      [event.target.name]: ganreValue,
+      [event.target.name]: ratingValue,
+      [event.target.name]: langValue
+    })
+  }
+  applyFilter() {
+    console.log(this.state.ganre)
+    console.log(this.state.rating)
+    console.log(this.state.language)
+  }
   render() {
     return (
       <div className="filters">
         <label>Ganre: </label>
-        <select name="genre">
+        <select name="ganre" onChange={this.handleChange}>
           <option value="all">All</option>
           <option value="action">Action</option>
           <option value="adult">Adult</option>
@@ -38,7 +63,7 @@ export default class Filter extends Component {
           <option value="western">Western</option>
         </select>
         <label>Rating: </label>
-        <select name="rating">
+        <select name="rating" onChange={this.handleChange}>
           <option value="all">All</option>
           <option value="2+">2+</option>
           <option value="3+">3+</option>
@@ -50,7 +75,7 @@ export default class Filter extends Component {
           <option value="9+">9+</option>
         </select>
         <label>Language: </label>
-        <select data-placeholder="Choose a Language...">
+        <select name="language" onChange={this.handleChange}>
           <option value="all">All</option>
           <option value="AF">Afrikaans</option>
           <option value="SQ">Albanian</option>
@@ -125,6 +150,7 @@ export default class Filter extends Component {
           <option value="CY">Welsh</option>
           <option value="XH">Xhosa</option>
         </select>
+        <button onClick={this.applyFilter}>Apply</button>
       </div>
     )
   }

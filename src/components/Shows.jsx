@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { fetchData } from '../api/api'
-import Filter from './Filter'
 import '../styles/show.css'
 
 export default class Shows extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      arrayOfShows: [],
       showNames: [],
       showImg: []
     }
@@ -16,8 +16,9 @@ export default class Shows extends Component {
       console.log(res)
       for (let i = 0; i < res.length; i++) {
         this.setState({
+          arrayOfShows: [...this.state.arrayOfShows, res[i]],
           showNames: [...this.state.showNames, res[i].name],
-          showImg: [...this.state.showImg, res[i].image.original]
+          showImg: [...this.state.showImg, res[i].image.medium]
         })
       }
     })
@@ -33,7 +34,6 @@ export default class Shows extends Component {
     return (
       <>
         <div className="main">
-          <Filter />
           <div className="shows">{showsArray}</div>
         </div>
       </>
