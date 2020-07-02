@@ -7,8 +7,11 @@ export default class Shows extends Component {
     super(props)
     this.state = {
       arrayOfShows: [],
-      showNames: [],
-      showImg: []
+      filterValue: {
+        ganre: this.props.ganre,
+        rating: this.props.rating,
+        language: this.props.language
+      }
     }
   }
   componentDidMount() {
@@ -16,27 +19,32 @@ export default class Shows extends Component {
       console.log(res)
       for (let i = 0; i < res.length; i++) {
         this.setState({
-          arrayOfShows: [...this.state.arrayOfShows, res[i]],
-          showNames: [...this.state.showNames, res[i].name],
-          showImg: [...this.state.showImg, res[i].image.medium]
+          arrayOfShows: [...this.state.arrayOfShows, res[i]]
         })
       }
     })
   }
-  render() {
-    let showsArray = this.state.showImg.map((showImg) => {
+  renderShows = () => {
+    let renderArray = this.state.arrayOfShows.map((shows) => {
       return (
-        <div className="show-wrap">
-          <img className="show-img" src={showImg} alt="show-poster" />
+        <div key={shows.id} className="show-wrap">
+          <img
+            className="show-img"
+            src={shows.image.medium}
+            alt="show-poster"
+          />
         </div>
       )
     })
+    return renderArray
+  }
+  render() {
     return (
-      <>
+      <React.Fragment>
         <div className="main">
-          <div className="shows">{showsArray}</div>
+          <div className="shows">{this.renderShows()}</div>
         </div>
-      </>
+      </React.Fragment>
     )
   }
 }
