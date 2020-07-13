@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactPaginate from 'react-paginate'
 import { fetchData } from '../api/api'
 import '../styles/show.css'
 import Filter from './Filter'
@@ -7,42 +8,59 @@ export default class Shows extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      arrayOfShows: [],
+      data: [],
       genre: 'All',
       rating: 'All',
-      language: 'All'
+      language: 'All',
+      offset: 0,
+      perPage: 20,
+      currentPage: 0
     }
   }
-  componentDidMount() {
-    fetchData().then((res) => {
-      console.log(res)
-      for (let i = 0; i < 10; i++) {
-        this.setState({
-          arrayOfShows: [...this.state.arrayOfShows, res[i]]
-        })
-      }
+  receiveData() {
+    fetchData().then((data) => {
+      const slice = data.slice(
+        this.state.offset,
+        this.state.offset + this.state.perPage
+      )
+      const renderData = slice.map((d) => {
+        return (
+          <div key={d.id} className="show-wrap">
+            <img className="show-img" src={d.image.medium} alt="show-poster" />
+          </div>
+        )
+      })
+      this.setState({
+        pageCount: Math.ceil(data.length / this.state.perPage),
+        renderData
+      })
     })
   }
-  renderShows = () => {
-    let renderArray = this.state.arrayOfShows.map((shows) => {
-      return (
-        <div key={shows.id} className="show-wrap">
-          <img
-            className="show-img"
-            src={shows.image.medium}
-            alt="show-poster"
-          />
-        </div>
-      )
-    })
-    return renderArray
+
+  componentDidMount() {
+    this.receiveData()
+  }
+
+  handlePageClick = (e) => {
+    const selectedPage = e.selected
+    const offset = selectedPage * this.state.perPage
+
+    this.setState(
+      {
+        currentPage: selectedPage,
+        offset: offset
+      },
+      () => {
+        this.receiveData()
+      }
+    )
   }
 
   handleApply = () => {
-    const shows = [...this.state.arrayOfShows]
+    const shows = [...this.state.data]
     const modified = shows.filter((s) => s.genres[0] === this.state.ganre)
     this.setState({
-      arrayOfShows: [...modified]
+      data: [...modified]
     })
     console.log(modified)
   }
@@ -66,7 +84,20 @@ export default class Shows extends Component {
             handleChange={this.handleChange}
             handleApply={this.handleApply}
           />
-          <div className="shows">{this.renderShows()}</div>
+          <div className="shows">{this.state.renderData}</div>
+          <ReactPaginate
+            previousLabel={'prev'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            pageCount={this.state.pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={this.handlePageClick}
+            containerClassName={'pagination'}
+            subContainerClassName={'pages pagination'}
+            activeClassName={'active'}
+          />
         </div>
       </React.Fragment>
     )
