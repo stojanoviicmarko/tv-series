@@ -17,31 +17,33 @@ export default class Shows extends Component {
       currentPage: 0
     }
   }
+  getData() {
+    fetchData().then(data => {
+      this.setState({ data: data })
+    })
+  }
   receiveData() {
-    fetchData().then((data) => {
-      const slice = data.slice(
-        this.state.offset,
-        this.state.offset + this.state.perPage
+    const { data, offset, perPage } = this.state
+    const slice = data.slice(offset, offset + perPage)
+    const renderData = slice.map(d => {
+      return (
+        <div key={d.id} className="show-wrap">
+          <img className="show-img" src={d.image.medium} alt="show-poster" />
+        </div>
       )
-      const renderData = slice.map((d) => {
-        return (
-          <div key={d.id} className="show-wrap">
-            <img className="show-img" src={d.image.medium} alt="show-poster" />
-          </div>
-        )
-      })
-      this.setState({
-        pageCount: Math.ceil(data.length / this.state.perPage),
-        renderData
-      })
+    })
+    this.setState({
+      pageCount: Math.ceil(data.length / this.state.perPage),
+      renderData
     })
   }
 
   componentDidMount() {
-    this.receiveData()
+    this.getData()
+    setInterval(() => {this.receiveData()}, 1000)
   }
 
-  handlePageClick = (e) => {
+  handlePageClick = e => {
     const selectedPage = e.selected
     const offset = selectedPage * this.state.perPage
 
@@ -57,15 +59,14 @@ export default class Shows extends Component {
   }
 
   handleApply = () => {
-    const shows = [...this.state.data]
-    const modified = shows.filter((s) => s.genres[0] === this.state.ganre)
+    const shows = [ ...this.state.data ]
+    const modified = shows.filter(s => s.genres[0] === this.state.ganre)
     this.setState({
-      data: [...modified]
+      data: [ ...modified ]
     })
-    console.log(modified)
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const ganreValue = event.target.value
     const ratingValue = event.target.value
     const langValue = event.target.value
@@ -80,10 +81,7 @@ export default class Shows extends Component {
     return (
       <React.Fragment>
         <div className="main">
-          <Filter
-            handleChange={this.handleChange}
-            handleApply={this.handleApply}
-          />
+          <Filter handleChange={this.handleChange} handleApply={this.handleApply} />
           <div className="shows">{this.state.renderData}</div>
           <ReactPaginate
             previousLabel={'prev'}
