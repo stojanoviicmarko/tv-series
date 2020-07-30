@@ -12,3 +12,5 @@ export const fetchData = async (showNumber) => {
     console.log(error)
   }
 }
+
+export const searchData = async (search) => {}

@@ -6,7 +6,7 @@ const Filter = (props) => {
   return (
     <div className="filters">
       <label>Ganre: </label>
-      <select name="ganre" onChange={handleChange}>
+      <select name="genre" onChange={handleChange}>
         <option value="All">All</option>
         <option value="Action">Action</option>
         <option value="Adult">Adult</option>

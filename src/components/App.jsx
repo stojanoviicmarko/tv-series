@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Header from './Header'
-import Shows from './Shows'
+import Header from './header'
+import Shows from './shows'
 
 class App extends Component {
   render() {
