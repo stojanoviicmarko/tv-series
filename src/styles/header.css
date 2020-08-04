@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 .header {
   background-color: rgb(46, 46, 46);
@@ -64,7 +65,10 @@
   outline: none;
   cursor: pointer;
   border-radius: 3px;
+}
+.sign-in-button a {
   text-decoration: none;
+  color: white;
 }
 .sign-in-button:hover {
   background-color: rgb(59, 59, 59);
@@ -72,6 +76,8 @@
 .sign-in-button:active {
   background-color: rgb(138, 138, 138);
 }
-.logo {
-  width: 60px;
+.home {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
 }

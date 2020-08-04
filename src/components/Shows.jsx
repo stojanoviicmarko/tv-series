@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import { fetchData } from '../api/api'
 import '../styles/show.css'
@@ -28,7 +29,9 @@ export default class Shows extends Component {
     const renderData = slice.map((d) => {
       return (
         <div key={d.id} className="show-wrap">
-          <img className="show-img" src={d.image.medium} alt="show-poster" />
+          <Link to={`/show/${d.id}/${d.name.toLowerCase()}`}>
+            <img className="show-img" src={d.image.medium} alt="show-poster" />
+          </Link>
         </div>
       )
     })

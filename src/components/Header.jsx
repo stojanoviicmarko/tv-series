@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/header.css'
+import { Link } from 'react-router-dom'
 
 const Header = (props) => {
   return (
@@ -7,11 +8,9 @@ const Header = (props) => {
       <div className="header">
         <div className="navbar">
           <ul>
-            <img
-              className="logo"
-              src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.oliviadabo.net%2Fwp-content%2Fuploads%2F2013%2F06%2Fimdb-logo.png&f=1&nofb=1"
-              alt="logo"
-            />
+            <Link className="home" to="/">
+              Home
+            </Link>
             <div className="search-box">
               <input
                 className="search-input"
@@ -20,7 +19,9 @@ const Header = (props) => {
               />
               <button className="search-button">Search</button>
             </div>
-            <button className="sign-in-button"></button>
+            <button className="sign-in-button">
+              <Link to="/login">Login</Link>
+            </button>
           </ul>
         </div>
       </div>
