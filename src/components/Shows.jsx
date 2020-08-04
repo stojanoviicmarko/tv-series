@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import { fetchData } from '../api/api'
-import '../styles/show.css'
 import Filter from './filter'
 
 export default class Shows extends Component {
@@ -28,9 +27,14 @@ export default class Shows extends Component {
     const slice = data.slice(offset, offset + perPage)
     const renderData = slice.map((d) => {
       return (
-        <div key={d.id} className="show-wrap">
+        <div key={d.id} className="card bg-dark text-light m-2">
           <Link to={`/show/${d.id}/${d.name.toLowerCase()}`}>
-            <img className="show-img" src={d.image.medium} alt="show-poster" />
+            <div class="card-header">{d.name}</div>
+            <img
+              className="card-img-top"
+              src={d.image.medium}
+              alt="show-poster"
+            />
           </Link>
         </div>
       )
@@ -92,13 +96,13 @@ export default class Shows extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <div className="main">
           <Filter
             handleChange={this.handleChange}
             handleApply={this.handleApply}
           />
-          <div className="shows">{this.state.renderData}</div>
+          <div className="row row-cols-6">{this.state.renderData}</div>
           <ReactPaginate
             previousLabel={'prev'}
             nextLabel={'next'}
@@ -113,7 +117,7 @@ export default class Shows extends Component {
             activeClassName={'active'}
           />
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }
