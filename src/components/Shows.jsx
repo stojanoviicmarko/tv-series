@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import { fetchData } from '../api/api'
 import Filter from './filter'
+import '../assets/pagination.css'
+import '../assets/shows.css'
 
 export default class Shows extends Component {
   constructor(props) {
@@ -27,9 +29,9 @@ export default class Shows extends Component {
     const slice = data.slice(offset, offset + perPage)
     const renderData = slice.map((d) => {
       return (
-        <div key={d.id} className="card bg-dark text-light m-2">
+        <div key={d.id} className="card text-light m-2">
           <Link to={`/show/${d.id}/${d.name.toLowerCase()}`}>
-            <div class="card-header">{d.name}</div>
+            <div className="card-header">{d.name}</div>
             <img
               className="card-img-top"
               src={d.image.medium}
@@ -102,7 +104,7 @@ export default class Shows extends Component {
             handleChange={this.handleChange}
             handleApply={this.handleApply}
           />
-          <div className="row row-cols-6">{this.state.renderData}</div>
+          <div className="shows">{this.state.renderData}</div>
           <ReactPaginate
             previousLabel={'prev'}
             nextLabel={'next'}

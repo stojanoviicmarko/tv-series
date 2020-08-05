@@ -5,16 +5,23 @@ export default class Show extends Component {
   _isMounted = false
 
   state = {
-    data: [],
+    name: null,
+    img: '',
+    summary: null,
+    rating: '',
     id: null
   }
 
   getData() {
     let id = this.props.match.params.show_id
     fetchShow(id).then((data) => {
+      console.log(data)
       this._isMounted &&
         this.setState({
-          data: data,
+          name: data.name,
+          img: data.image.original,
+          summary: data.summary,
+          rating: data.rating.average,
           id: id
         })
     })
@@ -29,8 +36,20 @@ export default class Show extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>{this.state.id}</h1>
+      <div className="container d-flex flex-row">
+        <img
+          src={this.state.img}
+          className="img-fluid rounded m-4"
+          alt="show poster"
+          style={{ height: 600 }}
+        />
+        <div className="m-2">
+          <h1>{this.state.name}</h1>
+          {this.state.summary}
+          <p className="m-2">
+            <b>Rating: {this.state.rating}</b>
+          </p>
+        </div>
       </div>
     )
   }

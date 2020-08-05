@@ -4,11 +4,11 @@ const Filter = (props) => {
   const { handleChange, handleApply } = props
   return (
     <div className="container">
-      <div class="form-group">
+      <div className="form-group">
         <div className="row row-cols-5">
           <select
             className="custom-select m-2"
-            id="genre"
+            name="genre"
             onChange={handleChange}
           >
             <option value="All">All</option>
