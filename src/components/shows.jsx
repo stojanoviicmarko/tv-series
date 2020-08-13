@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
-import { fetchData } from '../api/api'
+import { fetchData, searchShow } from '../api/api'
 import Filter from './filter'
 import '../assets/pagination.css'
 import '../assets/shows.css'
@@ -11,6 +11,7 @@ export default class Shows extends Component {
     super(props)
     this.state = {
       data: [],
+      searchData: [],
       genre: 'All',
       rating: 'All',
       language: 'All',
@@ -96,6 +97,32 @@ export default class Shows extends Component {
     })
   }
 
+  handleSearch = (event) => {
+    searchShow(event.target.value).then(data => {
+      const searchData = data
+      const renderSearchData = searchData.map(d => {
+      let showImage = d.show.image ? d.show.image.medium : 'https://tse4.mm.bing.net/th?id=OIP.2EVNHHX4D-jWbnofJsaQHAHaFj&pid=Api'
+        return (
+          <div key={d.show.id} className="card text-light m-2">
+            <Link to={`/show/${d.show.id}/${d.show.name.toLowerCase()}`}>
+              <div className="card-header">{d.show.name}</div>
+              <img
+                src={showImage}
+                className="card-img-top"
+                alt="show-poster"
+              />
+            </Link>
+          </div>
+        )
+      })
+      this.setState({
+        searchData: data,
+        data: [],
+        renderSearchData
+      })
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -104,7 +131,15 @@ export default class Shows extends Component {
             handleChange={this.handleChange}
             handleApply={this.handleApply}
           />
+          <input
+            onChange={this.handleSearch}
+            className="form-control m-2 w-25"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
           <div className="shows">{this.state.renderData}</div>
+          <div className="shows">{this.state.renderSearchData}</div>
           <ReactPaginate
             previousLabel={'prev'}
             nextLabel={'next'}

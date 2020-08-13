@@ -4,6 +4,7 @@ import Header from './header'
 import Shows from './shows'
 import Login from './login'
 import Show from './show'
+import searchResult from './searchResult'
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Route exact path="/" component={Shows} />
         <Route path="/login" component={Login} />
         <Route path="/show/:show_id" component={Show} />
+        <Route path="/search/:quarry" component={searchResult} />
       </BrowserRouter>
     )
   }

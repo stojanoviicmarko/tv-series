@@ -23,3 +23,14 @@ export const fetchShow = async (showId) => {
     console.log(error)
   }
 }
+
+export const searchShow = async (query) => {
+  try {
+    const apiPromise = await axios.get(`https://api.tvmaze.com/search/shows?q=:${query}`)
+    const jsonData = apiPromise.data
+
+    return jsonData
+  } catch (error) {
+    console.log(error)
+  }
+}
