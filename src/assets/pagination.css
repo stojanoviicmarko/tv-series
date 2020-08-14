@@ -5,12 +5,12 @@
   outline: none;
 }
 .pagination > .active > a {
-  background-color: #417cfc;
-  border-color: #417cfc;
+  background-color: #718096;
+  border-color: #718096;
   color: white;
 }
 .pagination > li > a {
-  border: 1px solid #417cfc;
+  border: 1px solid #718096;
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
@@ -21,13 +21,13 @@
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #417cfc;
-  border-color: #417cfc;
+  background-color: #718096;
+  border-color: #718096;
   outline: none;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: #417cfc;
+  color: #718096;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span,

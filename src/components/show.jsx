@@ -20,7 +20,7 @@ export default class Show extends Component {
         this.setState({
           name: data.name,
           img: data.image.original,
-          summary: data.summary,
+          summary: data.summary.replace('<p>', '').replace('</p>', '').replace('<b>', '').replace('</b>', ''),
           rating: data.rating.average,
           id: id
         })
@@ -36,17 +36,16 @@ export default class Show extends Component {
   }
   render() {
     return (
-      <div className="container d-flex flex-row">
+      <div className="flex flex-row flex-wrap lg:flex-no-wrap m-8 xl:mx-48">
         <img
           src={this.state.img}
-          className="img-fluid rounded m-4"
+          className="rounded shadow-lg mx-12 lg:mx-0"
           alt="show poster"
-          style={{ height: 600 }}
         />
-        <div className="m-2">
-          <h1>{this.state.name}</h1>
-          {this.state.summary}
-          <p className="m-2">
+        <div className='m-8'>
+          <h1 className='font-bold text-xl text-white mb-4'>{this.state.name}</h1>
+          <p className='text-white mb-4'>{this.state.summary}</p>
+          <p className="text-orange-500">
             <b>Rating: {this.state.rating}</b>
           </p>
         </div>
