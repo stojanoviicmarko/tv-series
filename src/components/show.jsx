@@ -39,7 +39,7 @@ export default class Show extends Component {
       <div className="flex flex-row flex-wrap lg:flex-no-wrap m-8 xl:mx-48">
         <img
           src={this.state.img}
-          className="rounded shadow-lg mx-12 lg:mx-0"
+          className="rounded shadow-lg lg:mx-0 lg:w-2/4 flex-shrink-0"
           alt="show poster"
         />
         <div className='m-8'>

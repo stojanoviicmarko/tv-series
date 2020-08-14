@@ -32,7 +32,7 @@ export default class Shows extends Component {
       return (
         <div
           key={d.id}
-          className="max-w-sm bg-gray-800 rounded hover:bg-gray-400 hover:text-gray-900 transition-colors duration-200 active:bg-gray-200 overflow-hidden shadow-lg m-4 border border-gray-600 w-48 text-gray-300"
+          className="flex-grow max-w-xs bg-gray-800 rounded hover:bg-gray-400 hover:text-gray-900 transition-colors duration-200 active:bg-gray-200 overflow-hidden shadow-lg m-4 border border-gray-600 w-48 text-gray-300"
         >
           <Link to={`/show/${d.id}/${d.name.toLowerCase()}`}>
             <img className="w-full" src={d.image.medium} alt="show-poster" />
@@ -141,9 +141,9 @@ export default class Shows extends Component {
   render() {
     return (
       <div className="">
-        <div className="">
-          {/* <Filter handleChange={this.handleChange} handleApply={this.handleApply} />
-          <input onChange={this.handleSearch} className="" type="search" placeholder="Search" aria-label="Search" /> */}
+        <div className="flex flex-col justify-center items-center">
+          {/* <Filter handleChange={this.handleChange} handleApply={this.handleApply} /> */}
+          <input onChange={this.handleSearch} className="appearance-none bg-gray-500 text-white placeholder-white rounded w-3/6 lg:w-1/4 h-8 p-2 mx-4 item-center" type="search" placeholder="Search" aria-label="Search" />
           <div className="flex flex-col">
             <div className="flex justify-center h-auto flex-shrink flex-wrap w-full">{this.state.renderData}</div>
             <div className="flex justify-center h-auto flex-shrink flex-wrap w-full">{this.state.renderSearchData}</div>
