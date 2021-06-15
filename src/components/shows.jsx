@@ -28,7 +28,13 @@ export default class Shows extends Component {
     const slice = data.slice(offset, offset + perPage)
     const renderData = slice.map(d => {
       const rawSummary = d.summary
-      const summary = rawSummary.slice(0, 90).replace('<p>', '').replace('</p>', '').replace('<b>', '').replace('</b>', '').concat('...')
+      const summary = rawSummary
+        .slice(0, 90)
+        .replace('<p>', '')
+        .replace('</p>', '')
+        .replace('<b>', '')
+        .replace('</b>', '')
+        .concat('...')
       return (
         <div
           key={d.id}
@@ -74,34 +80,6 @@ export default class Shows extends Component {
       }
     )
   }
-
-  handleApply = () => {
-    const { data, genre } = this.state
-    const shows = [ ...data ]
-    const modified = shows.filter(s => {
-      if (genre !== 'All') {
-        return s.genres[0] === genre
-      } else {
-        this.getData()
-        return data
-      }
-    })
-    this.setState({
-      data: [ ...modified ]
-    })
-  }
-
-  handleChange = event => {
-    const genreValue = event.target.value
-    const ratingValue = event.target.value
-    const langValue = event.target.value
-    this.setState({
-      [event.target.name]: genreValue,
-      [event.target.name]: ratingValue,
-      [event.target.name]: langValue
-    })
-  }
-
   handleSearch = event => {
     searchShow(event.target.value).then(data => {
       const searchData = data
@@ -120,12 +98,12 @@ export default class Shows extends Component {
             <Link to={`/show/${d.show.id}/${d.show.name.toLowerCase()}`}>
               <img className="w-full" src={showImage} alt="show-poster" />
               <div className="px-4 py-2">
-              <div className="flex justify-between">
-                <div className="font-bold text-x mb-2">{d.show.name}</div>
-                <p className="text-orange-700 text-xs mt-1 ml-2">{d.show.rating.average}</p>
+                <div className="flex justify-between">
+                  <div className="font-bold text-x mb-2">{d.show.name}</div>
+                  <p className="text-orange-700 text-xs mt-1 ml-2">{d.show.rating.average}</p>
+                </div>
+                <p className="text-gray-600 text-xs">{summary}</p>
               </div>
-              <p className="text-gray-600 text-xs">{summary}</p>
-            </div>
             </Link>
           </div>
         )
@@ -143,9 +121,15 @@ export default class Shows extends Component {
       <div className="">
         <div className="flex flex-col justify-center items-center">
           {/* <Filter handleChange={this.handleChange} handleApply={this.handleApply} /> */}
-          <input onChange={this.handleSearch} className="appearance-none bg-gray-500 text-white placeholder-white rounded w-3/6 lg:w-1/4 h-8 p-2 mx-4 item-center" type="search" placeholder="Search" aria-label="Search" />
+          <input
+            onChange={this.handleSearch}
+            className="appearance-none bg-gray-500 text-white placeholder-white rounded w-3/6 lg:w-1/4 h-12 p-2 mx-4 item-center mt-4 text-lg"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
           <div className="flex flex-col">
-            <div className="flex justify-center h-auto flex-shrink flex-wrap w-full">{this.state.renderData}</div>
+            <div className="flex justify-center h-auto flex-shrink md:flex-wrap w-full">{this.state.renderData}</div>
             <div className="flex justify-center h-auto flex-shrink flex-wrap w-full">{this.state.renderSearchData}</div>
             <ReactPaginate
               previousLabel={'prev'}
