@@ -14,7 +14,7 @@ export default class Shows extends Component {
       rating: 'All',
       language: 'All',
       offset: 0,
-      perPage: 20,
+      perPage: 24,
       currentPage: 0
     }
   }
@@ -38,7 +38,7 @@ export default class Shows extends Component {
       return (
         <div
           key={d.id}
-          className="flex-grow max-w-xs bg-gray-800 rounded hover:bg-gray-400 hover:text-gray-900 transition-colors duration-200 active:bg-gray-200 overflow-hidden shadow-lg m-4 border border-gray-600 w-48 text-gray-300"
+          className="max-w-xs bg-gray-800 rounded hover:bg-gray-400 hover:text-gray-900 transition-colors duration-200 active:bg-gray-200 overflow-hidden shadow-lg m-4 border border-gray-600 w-48 text-gray-300 flex-none"
         >
           <Link to={`/show/${d.id}/${d.name.toLowerCase()}`}>
             <img className="w-full" src={d.image.medium} alt="show-poster" />
@@ -128,8 +128,10 @@ export default class Shows extends Component {
             placeholder="Search"
             aria-label="Search"
           />
-          <div className="flex flex-col">
-            <div className="flex justify-center h-auto flex-shrink md:flex-wrap w-full">{this.state.renderData}</div>
+          <div className="w-full flex flex-col items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 2xl:grid-rows-3">
+              {this.state.renderData}
+            </div>
             <div className="flex justify-center h-auto flex-shrink flex-wrap w-full">{this.state.renderSearchData}</div>
             <ReactPaginate
               previousLabel={'prev'}
