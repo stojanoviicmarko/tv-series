@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactPaginate from 'react-paginate'
 import { Link } from 'react-router-dom'
 import { fetchData, searchShow } from '../api/api'
-import '../assets/pagination.css'
+import '../pagination.css'
 
 export default class Shows extends Component {
   constructor(props) {

@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
+    "postcss": "^8.3.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-paginate": "^6.5.0",
@@ -24,8 +25,16 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [ ">0.2%", "not dead", "not op_mini all" ],
-    "development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
