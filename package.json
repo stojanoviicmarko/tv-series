@@ -8,7 +8,6 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
-    "postcss": "^8.3.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-paginate": "^6.5.0",
@@ -37,8 +36,9 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.36",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.1.4"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
   }
 }
